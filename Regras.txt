@@ -1,0 +1,20 @@
+Regras dos Arquivos
+
+	CARTINF01 - Nascido
+		Por linha:
+			- Mesmo tamanho. Se faltar, adicione espaço ao final;
+			- Após o primeiro "A" não pode haver zeros;
+			- Depois da primeira sequência de espaços não pode haver zeros;
+
+	CARTINF02 - Casamento
+		Por linha:
+			Tem 14 dígitos antes do “B”. 
+			Depois do “B” são apenas 3 digitos e não começa com 0. 
+			Depois tem 7 espaços. 
+			Tem mais 79 dígitos (porém não necessariamente é dígito, pode digito ou espaço dependendo se o registro é cancelado - que é aqueles casos que aparece um espaço e um tanto de 99). Nesse segundo bloco de dígitos, pode começar com 0. Não tem espaços depois.
+
+			Só que nesse tem uma coisa diferente porque são dois tipos de livros. 
+				Tem B+3digitos e tem o Bauxiliar. 
+					A regra pra esse B auxiliar seria: 
+						14 dígitos até o B, depois tem escrito AUXILIAR (onde era os 7 espaços do b normal com os dígitos). Então depois do B tem 8 letras + 2 dígitos que não começam com 0. 
+						BAUXILIAR40. Depois do nome diferente desse livro vem os 79 dígitos daquele segundo bloco que tinha no B normal.
