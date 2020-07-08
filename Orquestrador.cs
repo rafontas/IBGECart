@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IBGECart.Interface;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -16,10 +17,21 @@ namespace IBGECart
             this.ArquivosFactory();
         }
 
+        public void CriarArquivosTeste()
+        {
+            ConteudoCartinfTeste.CriarArquivo(TipoArquivo.Cartinf01);
+            ConteudoCartinfTeste.CriarArquivo(TipoArquivo.Cartinf02);
+            ConteudoCartinfTeste.CriarArquivo(TipoArquivo.Cartinf03);
+            ConteudoCartinfTeste.CriarArquivo(TipoArquivo.Cartinf04);
+        }
+
         private void ArquivosFactory()
         {
             this.Arquivos = new Dictionary<int, string>();
             this.Arquivos.Add(new KeyValuePair<int, string>((int)TipoArquivo.Cartinf01, "CARTINF01.TXT"));
+            this.Arquivos.Add(new KeyValuePair<int, string>((int)TipoArquivo.Cartinf02, "CARTINF02.TXT"));
+            this.Arquivos.Add(new KeyValuePair<int, string>((int)TipoArquivo.Cartinf03, "CARTINF03.TXT"));
+            this.Arquivos.Add(new KeyValuePair<int, string>((int)TipoArquivo.Cartinf04, "CARTINF04.TXT"));
         }
 
         public IList<TipoArquivo> VerificarSeHaArquivosDisponiveis()
@@ -47,23 +59,35 @@ namespace IBGECart
 
             foreach(int arqCorrecao in this.ArquivosDisponiveis) 
             {
-                switch(arqCorrecao)
+                ICartinf c = null;
+
+                switch (arqCorrecao)
                 {
                     case (int) TipoArquivo.Cartinf01:
-                        Cartinf01 c = new Cartinf01();
-                        Console.Write("    " + c.NOME_ARQUIVO + " - Em andamento...");
-                        c.CorrigeArquivo();
-                        Console.SetCursorPosition(Console.CursorLeft - " Em andamento...".Length, Console.CursorTop);
-                        Console.Write(" Concluído.            " + Environment.NewLine + Environment.NewLine);
-                        Thread.Sleep(10);
+                        c = new Cartinf01();
+                        break;
+
+                    case (int) TipoArquivo.Cartinf02:
+                        c = new Cartinf02();
+                        break;
+                    
+                    case (int) TipoArquivo.Cartinf03:
+                        c = new Cartinf03();
+                        break;
+
+                    case (int) TipoArquivo.Cartinf04:
+                        c = new Cartinf04();
                         break;
 
                     default: 
-                        Console.WriteLine("Erro: não há existe o arquivo pedido - " + arqCorrecao);
-                        break;
-
-
+                        throw new Exception("Tipo de arquivo não identificado.");
                 }
+
+                Console.Write("    " + c.NOME_ARQUIVO + " - Em andamento...");
+                c.CorrigeArquivo();
+                Console.SetCursorPosition(Console.CursorLeft - " Em andamento...".Length, Console.CursorTop);
+                Console.Write(" Concluído.            " + Environment.NewLine + Environment.NewLine);
+                Thread.Sleep(3);
             }
         }
     }
@@ -71,5 +95,8 @@ namespace IBGECart
     public enum TipoArquivo
     {
         Cartinf01 = 1,
+        Cartinf02 = 2,
+        Cartinf03 = 3,
+        Cartinf04 = 4,
     }
 }

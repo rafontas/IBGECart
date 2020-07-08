@@ -65,9 +65,24 @@ namespace IBGECart
             }
             else
             {
-                Console.WriteLine(Program.ComoUsar());
-                foreach (var arq in orquestrador.Arquivos) Console.WriteLine("    " + arq.Value + Environment.NewLine);
-                Console.WriteLine(Environment.NewLine + "Se você está lendo esta mensagem é porque não foi encontrado nenhum arquivo.");
+                Console.WriteLine();
+                Console.WriteLine("Digite \"C\" para criar arquivos de teste, depois aperte enter. Caso os arquivos existam, eles serão substituídos.");
+
+                string consoleInput = Console.ReadLine();
+
+                if (consoleInput.ToLower() == "c")
+                {
+                    orquestrador.CriarArquivosTeste();
+                }
+                else
+                {
+                    Console.WriteLine(Program.ComoUsar());
+                    
+                    foreach (var arq in orquestrador.Arquivos) 
+                        Console.WriteLine("    " + arq.Value + Environment.NewLine);
+
+                    Console.WriteLine(Environment.NewLine + "Se você está lendo esta mensagem é porque não foi encontrado nenhum arquivo.");
+                }
             }
 
             Console.WriteLine("Pressione qualquer tecla para fechar...");

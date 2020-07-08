@@ -6,15 +6,68 @@ Regras dos Arquivos
 			- Após o primeiro "A" não pode haver zeros;
 			- Depois da primeira sequência de espaços não pode haver zeros;
 
+		Exemplos:
+			31062000503120A0938       04012540201020120201310620011319993199931712049993330814045814                        
+
+		Resumindo as regras:
+			- Não pode: A + 0 & ' ' + 0
+
 	CARTINF02 - Casamento
 		Por linha:
 			Tem 14 dígitos antes do “B”. 
 			Depois do “B” são apenas 3 digitos e não começa com 0. 
 			Depois tem 7 espaços. 
-			Tem mais 79 dígitos (porém não necessariamente é dígito, pode digito ou espaço dependendo se o registro é cancelado - que é aqueles casos que aparece um espaço e um tanto de 99). Nesse segundo bloco de dígitos, pode começar com 0. Não tem espaços depois.
+			Tem mais 79 dígitos (porém não necessariamente é dígito, pode digito ou espaço dependendo se o registro é cancelado - que é aqueles casos que aparece um espaço e um tanto de 99). 
+			Nesse segundo bloco de dígitos, pode começar com 0. Não tem espaços depois.
+
+			B - Normal:
+				Não pode: B + 0
+
+			B - Auxiliar
+				Após o "BAUXILIAR" não tem zero;
 
 			Só que nesse tem uma coisa diferente porque são dois tipos de livros. 
 				Tem B+3digitos e tem o Bauxiliar. 
 					A regra pra esse B auxiliar seria: 
 						14 dígitos até o B, depois tem escrito AUXILIAR (onde era os 7 espaços do b normal com os dígitos). Então depois do B tem 8 letras + 2 dígitos que não começam com 0. 
 						BAUXILIAR40. Depois do nome diferente desse livro vem os 79 dígitos daquele segundo bloco que tinha no B normal.
+
+        Exemplos:
+            1. 
+			    31062000503120B0335       0085074030103012020121110011983110119933162104999311860199931062009993106200999
+                _______________X_________________________________________________________________________________________
+				31062000503120B335       0085074030103012020121110011983110119933162104999311860199931062009993106200999
+
+            2.
+			    31062000503120B0336       008518998999999999999999999999999999999                                        
+                _______________X_________________________________________________________________________________________
+				31062000503120B336       008518998999999999999999999999999999999                                        
+
+            3.
+			    31062000503120BAUXILIAR0400016515270114122019121129091992130119953139508999330100999931062009993106200999
+                _______________________X_________________________________________________________________________________
+			    31062000503120BAUXILIAR400016515270114122019121129091992130119953139508999330100999931062009993106200999
+
+            4.
+			    31062000503120BAUXILIAR040001651698999999999999999999999999999999                                        
+                _______________________X________________________________________________________________________________
+			    31062000503120BAUXILIAR40001651698999999999999999999999999999999                                        
+			
+			Resumindo:
+				- Não pode: R + 0 & B + 0
+
+	Cartinf 03 - Obitos
+		Tem 14 dígitos antes do “C”. 
+		Depois do “C” são apenas 3 digitos e não começa com 0. 
+		Depois tem 7 espaços. 
+		Tem mais 51 dígitos (porém não necessariamente é dígito, pode digito ou espaço dependendo se o registro é cancelado - que é aqueles casos que aparece um espaço e um tanto de 99). 
+		Nesse segundo bloco de dígitos, pode começar com 0. 
+		Depois tem 26 espaços e pula pra próxima linha.
+
+	Cartinf 04 - Obitos Fetais
+		14 dígitos até o C, depois tem escrito AUXILIAR. 
+		Então depois do C tem 8 letras. 
+		Nesse não tem espaço, o nome do livro fica tudo junto com a descriçao do registro.
+		Então depois do CAUXILAR, tem 55 dígitos. 
+		Eles nunca começam com 0 porque logo após o auxiliar vem o número do livro CAUXILAR13, por ex. 
+		E aí os outros dígitos vem direto, logo após o 13. Depois tem 26 espaços.
